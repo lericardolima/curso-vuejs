@@ -3,19 +3,21 @@ new Vue({
     data: {
         playerHealth: 100,
         monsterHealth: 100,
-        gameIsRunning: false
+        gameIsRunning: false,
+        turns: []
     },
     methods: {
         startGame: function() {
             this.gameIsRunning = true;
             this.playerHealth = 100;
             this.monsterHealth = 100;
+            this.turns = [];
         },
         attack: function() {
-            this.playerAttacks(3, 10);
+            this.playerAttacks(3, 10, false);
         },
         specialAttack: function() {
-            this.playerAttacks(10, 20);
+            this.playerAttacks(10, 20, true);
         },
         heal: function() {
             if (this.playerHealth <= 90) {
@@ -23,6 +25,10 @@ new Vue({
             } else {
                 this.playerHealth = 100;
             }
+            this.turns.unshift({
+                isPlayer: true,
+                text: 'Player heals plus 10'
+            });
             this.monsterAttacks();
         },
         giveUp: function() {
@@ -51,11 +57,22 @@ new Vue({
             return false;
         },
         monsterAttacks: function() {
-            this.playerHealth -= this.calculateDamage(5, 12);
+            const damage = this.calculateDamage(5, 12);
+            this.playerHealth -= damage
+            this.turns.unshift({
+                isPlayer: false,
+                text: 'Monster hits Player for ' + damage
+            });
             this.checkIfWins();
         },
-        playerAttacks: function(minDamage, maxDamage) {
-            this.monsterHealth -= this.calculateDamage(minDamage, maxDamage);
+        playerAttacks: function(minDamage, maxDamage, isSpecial) {
+            const damage = this.calculateDamage(minDamage, maxDamage);
+            this.monsterHealth -= damage;
+            let text = isSpecial ? 'Player hits Monster hard for ' : 'Player hits Monster for ';
+            this.turns.unshift({
+                isPlayer: true,
+                text: text + damage
+            });
             if (this.checkIfWins()) return true;
 
             this.monsterAttacks();
