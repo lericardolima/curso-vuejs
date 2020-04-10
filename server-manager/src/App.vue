@@ -15,7 +15,14 @@
 </template>
 
 <script>
-export default {};
+
+import Server from './components/Server'
+
+export default {
+  components: {
+    'app-server': Server
+  }
+};
 </script>
 
 <style>
