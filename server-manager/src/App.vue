@@ -3,7 +3,7 @@
     <app-header :title="title"></app-header>
     <section class="row d-flex justify-content-center">
       <div class="col-md-5">
-        <app-server></app-server>
+        <app-server :servers="servers"></app-server>
       </div>
       <div class="col-md-5">
         <app-server-details></app-server-details>
@@ -17,13 +17,20 @@
 import Header from "./components/shared/Header";
 import Footer from "./components/shared/Footer";
 import Server from "./components/server/Server";
-import ServerDetails from './components/server/ServerDetails';
+import ServerDetails from "./components/server/ServerDetails";
 
 export default {
   data: () => {
     return {
-      title: 'Server status'
-    }
+      title: "Server status",
+      servers: [
+        { id: 1, status: "Running" },
+        { id: 2, status: "Stopped" },
+        { id: 3, status: "Uknown" },
+        { id: 4, status: "Running" },
+        { id: 5, status: "Starting" }
+      ]
+    };
   },
   components: {
     "app-header": Header,
