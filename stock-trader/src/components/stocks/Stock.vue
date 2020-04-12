@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Stocks - Stock Component</h1>
+    <h1>Stock - Stocks Component</h1>
   </div>
 </template>
 <script>
