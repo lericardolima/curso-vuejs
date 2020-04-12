@@ -1,10 +1,18 @@
 <template>
   <div class="container">
-    <router-view></router-view>
+    <st-header></st-header>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
-export default {};
+import Header from "./components/Header.vue";
+export default {
+  components: {
+    "st-header": Header
+  }
+};
 </script>
 <style>
 </style>
