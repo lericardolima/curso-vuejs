@@ -2,7 +2,12 @@
   <div>
     <h1>Stocks</h1>
     <div class="row">
-      <stock-card class="col mb-3" v-for="(stock, index) in stocks" :key="index" :stock="stock"></stock-card>
+      <app-stocks-stock
+        class="col mb-3"
+        v-for="(stock, index) in stocks"
+        :key="index"
+        :stock="stock"
+      ></app-stocks-stock>
     </div>
   </div>
 </template>
@@ -10,12 +15,12 @@
 import Stock from "./Stock.vue";
 export default {
   components: {
-    "stock-card": Stock
+    "app-stocks-stock": Stock
   },
   data() {
     return {
       stocks: this.$store.getters.stocks
-    }
+    };
   }
 };
 </script>

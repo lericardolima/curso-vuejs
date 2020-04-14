@@ -12,7 +12,7 @@ export default {
     "app-header": Header
   },
   created() {
-    this.$store.dispatch('initStocks');
+    this.$store.dispatch("initStocks");
   }
 };
 </script>

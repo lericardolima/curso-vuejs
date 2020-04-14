@@ -7,7 +7,7 @@
       </div>
       <div class="d-flex card-body">
         <div class="float-left">
-          <input type="number" class="form-control" placeholder="Quantity" v-model="quantity"/>
+          <input type="number" class="form-control" placeholder="Quantity" v-model="quantity" />
         </div>
         <div class="float-right mx-2">
           <button class="btn btn-success" :disabled="!isValidQuantity" @click="buyStock">Buy</button>
@@ -32,8 +32,8 @@ export default {
   },
   data() {
     return {
-      quantity: ''
-    }
+      quantity: ""
+    };
   },
   computed: {
     isValidQuantity() {
@@ -46,9 +46,9 @@ export default {
         id: this.stock.id,
         price: this.stock.price,
         quantity: this.quantity
-      }
+      };
 
-      this.$store.dispatch('buyStock', order);
+      this.$store.dispatch("buyStock", order);
       this.quantity = 0;
     }
   }
