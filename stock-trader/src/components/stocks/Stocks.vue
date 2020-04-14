@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>Stocks</h1>
-    <stock-card v-for="(stock, index) in stocks" :key="index"></stock-card>
+    <div class="row">
+      <stock-card class="col mb-3" v-for="(stock, index) in stocks" :key="index"></stock-card>
+    </div>
   </div>
 </template>
 <script>

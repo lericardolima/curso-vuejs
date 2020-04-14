@@ -1,19 +1,19 @@
 <template>
   <div>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header class="mt-3">
+      <nav class="flex-row navbar navbar-expand-lg navbar-light bg-light">
         <router-link class="navbar-brand" to="/home">
           Stock Trader
         </router-link>
 
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <router-link to="portfolio" tag="li" class="nav-item"><a class="nav-link">Portfolio</a></router-link>
-            <router-link to="stocks" tag="li" class="nav-item"><a class="nav-link">Stocks</a></router-link>
+        <div class="col">
+          <ul class="float-left flex-row navbar-nav mr-auto">
+            <router-link to="portfolio" tag="li" class="nav-item ml-2"><a class="nav-link">Portfolio</a></router-link>
+            <router-link to="stocks" tag="li" class="nav-item ml-2"><a class="nav-link">Stocks</a></router-link>
           </ul>
-          <ul class="navbar-nav navbar-right">
-            <li class="nav-item"><a class="nav-link" href="#">End Day</a></li>
-            <li class="nav-item dropdown">
+          <ul class="float-right flex-row navbar-nav navbar-right">
+            <li class="nav-item ml-2"><a class="nav-link" href="#">End Day</a></li>
+            <li class="nav-item dropdown ml-2">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -37,8 +37,3 @@
 <script>
 export default {};
 </script>
-<style scoped>
-header {
-  margin: 20px 10%;
-}
-</style>
