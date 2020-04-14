@@ -10,7 +10,7 @@
           <input type="number" class="form-control" placeholder="Quantity" v-model="quantity"/>
         </div>
         <div class="float-right mx-2">
-          <button class="btn btn-success" :disabled="!isValidQuantity">Buy</button>
+          <button class="btn btn-success" :disabled="!isValidQuantity" @click="buyStock">Buy</button>
         </div>
       </div>
     </div>
@@ -38,6 +38,18 @@ export default {
   computed: {
     isValidQuantity() {
       return this.quantity && this.quantity > 0;
+    }
+  },
+  methods: {
+    buyStock() {
+      const order = {
+        id: this.stock.id,
+        price: this.stock.price,
+        quantity: this.quantity
+      }
+
+      this.$store.dispatch('buyStock', order);
+      this.quantity = 0;
     }
   }
 };
