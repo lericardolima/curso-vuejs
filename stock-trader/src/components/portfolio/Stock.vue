@@ -71,6 +71,7 @@ export default {
       };
 
       this.placeSellOrders(order);
+      this.quantity = 0;
     }
   }
 };
