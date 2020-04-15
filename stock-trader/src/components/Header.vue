@@ -37,8 +37,8 @@
               </a>
               <div class="dropdown-menu position-absolute"
                 :class="{show: isDropdownExpanded}">
-                  <a class="dropdown-item">Save data</a>
-                  <a class="dropdown-item">Load data</a>
+                  <a class="dropdown-item" @click="saveData">Save data</a>
+                  <a class="dropdown-item" @click="loadData">Load data</a>
               </div>
             </li>
           </ul>
@@ -62,14 +62,27 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'randomizeStocks'
-    ]),
+    ...mapActions({
+      randomizeStocks: 'randomizeStocks',
+      fetchData: 'loadData'
+    }),
     endDay() {
       this.randomizeStocks();
     },
     alternateDropdownStatus() {
       this.isDropdownExpanded = !this.isDropdownExpanded;
+    },
+    saveData() {
+      const data = {
+        funds: this.$store.getters.funds,
+        stockPortfolio: this.$store.getters.stockPortfolio,
+        stocks: this.$store.getters.stocks
+      }
+
+      this.$http.put('data.json', data);
+    },
+    loadData() {
+      this.fetchData();
     }
   }
 };
