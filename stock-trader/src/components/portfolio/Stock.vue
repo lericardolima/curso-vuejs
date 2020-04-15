@@ -38,7 +38,11 @@ export default {
   },
   computed: {
     isValidQuantity() {
-      return this.quantity && this.quantity > 0;
+      return (
+        this.quantity &&
+        this.quantity > 0 &&
+        this.quantity <= this.stock.quantity
+      );
     }
   },
   methods: {
