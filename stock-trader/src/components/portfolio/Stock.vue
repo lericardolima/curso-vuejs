@@ -1,7 +1,7 @@
 <template>
   <div class="col-sm-6 col-md-4">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header alert-info">
         {{ stock.name }}
         <small>(Price: {{ stock.price }} | Quantity: {{ stock.quantity }})</small>
       </div>
@@ -10,7 +10,7 @@
           <input type="number" class="form-control" placeholder="Quantity" v-model="quantity" />
         </div>
         <div class="float-right mx-2">
-          <button class="btn btn-success" :disabled="!isValidQuantity" @click="sellStock">Sell</button>
+          <button class="btn btn-info" :disabled="!isValidQuantity" @click="sellStock">Sell</button>
         </div>
       </div>
     </div>

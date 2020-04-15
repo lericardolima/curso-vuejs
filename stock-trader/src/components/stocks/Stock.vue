@@ -1,7 +1,7 @@
 <template>
   <div class="col-sm-6 col-md-4">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header alert-success">
         {{ stock.name }}
         <small>(Price: {{ stock.price }})</small>
       </div>
