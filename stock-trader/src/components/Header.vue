@@ -22,10 +22,11 @@
             <li class="nav-item ml-2">
               <a class="nav-link" @click="endDay">End Day</a>
             </li>
-            <li class="nav-item dropdown ml-2">
+            <li class="nav-item dropdown ml-2"
+                @click="alternateDropdownStatus">
               <a
-                class="nav-link dropdown-toggle"
                 href="#"
+                class="nav-link dropdown-toggle"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -34,14 +35,11 @@
                 Save & Load
                 <span class="caret"></span>
               </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">Save data</a>
-                </li>
-                <li>
-                  <a href="#">Load data</a>
-                </li>
-              </ul>
+              <div class="dropdown-menu position-absolute"
+                :class="{show: isDropdownExpanded}">
+                  <a class="dropdown-item">Save data</a>
+                  <a class="dropdown-item">Load data</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -53,6 +51,11 @@
 <script>
 import { mapActions } from 'vuex';
 export default {
+  data() {
+    return {
+      isDropdownExpanded: false
+    }
+  },
   computed: {
     funds() {
       return this.$store.getters.funds;
@@ -64,6 +67,9 @@ export default {
     ]),
     endDay() {
       this.randomizeStocks();
+    },
+    alternateDropdownStatus() {
+      this.isDropdownExpanded = !this.isDropdownExpanded;
     }
   }
 };
