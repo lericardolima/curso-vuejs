@@ -5,12 +5,26 @@
         {{ stock.name }}
         <small>(Price: {{ stock.price }})</small>
       </div>
-      <div class="d-flex card-body">
-        <div class="float-left">
-          <input type="number" class="form-control" placeholder="Quantity" v-model="quantity" />
+      <div class="pb-0 flex-column card-body">
+        <div class="d-flex flex-row mb-3">
+          <div class="float-left">
+            <input type="number" class="form-control" placeholder="Quantity" v-model="quantity" />
+          </div>
+          <div class="float-right mx-2">
+            <button
+              class="btn btn-success"
+              :disabled="!isQuantityPositive || !areFundsSufficient"
+              @click="buyStock"
+            >Buy</button>
+          </div>
         </div>
-        <div class="float-right mx-2">
-          <button class="btn btn-success" :disabled="!isValidQuantity" @click="buyStock">Buy</button>
+        <div class="alert-light">
+          <p v-if="!areFundsSufficient" class="text-danger">Insufficient funds.</p>
+          <p v-if="!isQuantityZeroOrPositive" class="text-danger">Invalid quantity.</p>
+          <p
+            v-if="isQuantityZeroOrPositive && areFundsSufficient"
+            class="text-success"
+          >Total: {{ this.quantity * this.stock.price }}</p>
         </div>
       </div>
     </div>
@@ -32,12 +46,21 @@ export default {
   },
   data() {
     return {
-      quantity: ""
+      quantity: 0
     };
   },
   computed: {
-    isValidQuantity() {
+    isQuantityZeroOrPositive() {
+      return this.quantity >= 0;
+    },
+    isQuantityPositive() {
       return this.quantity && this.quantity > 0;
+    },
+    areFundsSufficient() {
+      return this.quantity * this.stock.price <= this.funds;
+    },
+    funds() {
+      return this.$store.getters.funds;
     }
   },
   methods: {
