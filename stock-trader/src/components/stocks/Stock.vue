@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header alert-success">
         {{ stock.name }}
-        <small>(Price: {{ stock.price }})</small>
+        <small>(Price: {{ stock.price | currency }})</small>
       </div>
       <div class="pb-0 flex-column card-body">
         <div class="d-flex flex-row mb-3">
@@ -24,7 +24,7 @@
           <p
             v-if="isQuantityZeroOrPositive && areFundsSufficient"
             class="text-success"
-          >Total: {{ this.quantity * this.stock.price }}</p>
+          >Total: {{ this.quantity * this.stock.price | currency }}</p>
         </div>
       </div>
     </div>

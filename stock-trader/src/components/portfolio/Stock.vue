@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header alert-info">
         {{ stock.name }}
-        <small>(Price: {{ stock.price }} | Quantity: {{ stock.quantity }})</small>
+        <small>(Price: {{ stock.price | currency }} | Quantity: {{ stock.quantity }})</small>
       </div>
       <div class="pb-0 flex-column card-body">
         <div class="d-flex flex-row mb-3">
@@ -19,7 +19,7 @@
           <p v-if="!isQuantityZeroOrPositive" class="text-danger">Invalid quantity.</p>
           <p v-if="isQuantityZeroOrPositive && isQuantitySufficient"
             class="text-success"
-          >Total: {{ this.quantity * this.stock.price }}</p>
+          >Total: {{ this.quantity * this.stock.price | currency }}</p>
         </div>
       </div>
     </div>

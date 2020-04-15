@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
 import store from './store/store'
+import currency from './filters/currency'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Bootstrap configuration
@@ -21,6 +22,9 @@ const router = new VueRouter({
   routes: routes,
   mode: 'history'
 });
+
+// Filters
+Vue.filter('currency', currency);
 
 new Vue({
   render: h => h(App),

@@ -15,7 +15,7 @@
           </ul>
           <ul class="navbar-nav float-right mr-auto">
             <li class="nav-item ml-2">
-              <strong class="nav-link disabled">Funds: {{ funds }}</strong>
+              <strong class="nav-link disabled">Funds: {{ funds | currency }}</strong>
             </li>
           </ul>
           <ul class="float-right flex-row navbar-nav navbar-right">
