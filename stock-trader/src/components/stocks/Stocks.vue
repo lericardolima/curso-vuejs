@@ -12,15 +12,16 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import Stock from "./Stock.vue";
 export default {
   components: {
     "app-stocks-stock": Stock
   },
-  data() {
-    return {
-      stocks: this.$store.getters.stocks
-    };
+  computed: {
+    ...mapGetters([
+      'stocks'
+    ])
   }
 };
 </script>
