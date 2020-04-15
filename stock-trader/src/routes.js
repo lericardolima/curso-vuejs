@@ -1,8 +1,6 @@
 import Home from './components/Home.vue';
 import Stocks from './components/stocks/Stocks.vue';
-import StocksStock from './components/stocks/Stock.vue';
 import Portfolio from './components/portfolio/Portfolio.vue';
-import PortfolioStock from './components/portfolio/Stock.vue';
 
 const routes = [
     {
@@ -11,23 +9,11 @@ const routes = [
     },
     {
         path: '/stocks',
-        component: Stocks,
-        children: [
-            {
-                path: ':id',
-                component: StocksStock
-            }
-        ]
+        component: Stocks
     },
     {
         path: '/portfolio',
-        component: Portfolio,
-        children: [
-            {
-                path: ':id',
-                component: PortfolioStock
-            }
-        ] 
+        component: Portfolio
     },
     {
         path: '*',
